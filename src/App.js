@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import Shelf from './Shelf';
 import Search from './Search';
+import Error from './Error';
 
 class BooksApp extends Component {
 	state = {
@@ -40,6 +41,7 @@ class BooksApp extends Component {
 		const { isLoaded, books } = this.state;
 		return (
 			<div className="app">
+				<Switch>
 				<Route
 					path="/search"
 					render={() => <Search shelvedBooks={books} onChangeShelf={this.changeShelf} />}
@@ -83,6 +85,10 @@ class BooksApp extends Component {
 						</div>
 					)}
 				/>
+				<Route
+					render={() => <Error />}
+				/>
+				</Switch>
 			</div>
 		);
 	}

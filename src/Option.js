@@ -5,13 +5,7 @@ class Option extends Component {
 	state = {
 		isUpdating: false
 	};
-
-	componentWillReceiveProps() {
-		this.setState({
-			isUpdating: false
-		});
-	}
-
+	
 	changeShelf = event => {
 		this.props.onChangeShelf(this.props.book, event);
 		this.setState({
